@@ -1,0 +1,16 @@
+F:\A\InventorySystem\InventorySystem\bin\Debug\netcoreapp2.1\appsettings.Development.json
+F:\A\InventorySystem\InventorySystem\bin\Debug\netcoreapp2.1\appsettings.json
+F:\A\InventorySystem\InventorySystem\bin\Debug\netcoreapp2.1\Properties\launchSettings.json
+F:\A\InventorySystem\InventorySystem\bin\Debug\netcoreapp2.1\InventorySystem.deps.json
+F:\A\InventorySystem\InventorySystem\bin\Debug\netcoreapp2.1\InventorySystem.runtimeconfig.json
+F:\A\InventorySystem\InventorySystem\bin\Debug\netcoreapp2.1\InventorySystem.runtimeconfig.dev.json
+F:\A\InventorySystem\InventorySystem\bin\Debug\netcoreapp2.1\InventorySystem.dll
+F:\A\InventorySystem\InventorySystem\obj\Debug\netcoreapp2.1\InventorySystem.RazorAssemblyInfo.cache
+F:\A\InventorySystem\InventorySystem\obj\Debug\netcoreapp2.1\InventorySystem.RazorAssemblyInfo.cs
+F:\A\InventorySystem\InventorySystem\obj\Debug\netcoreapp2.1\InventorySystem.AssemblyInfoInputs.cache
+F:\A\InventorySystem\InventorySystem\obj\Debug\netcoreapp2.1\InventorySystem.AssemblyInfo.cs
+F:\A\InventorySystem\InventorySystem\obj\Debug\netcoreapp2.1\InventorySystem.RazorTargetAssemblyInfo.cache
+F:\A\InventorySystem\InventorySystem\bin\Debug\netcoreapp2.1\InventorySystem.pdb
+F:\A\InventorySystem\InventorySystem\obj\Debug\netcoreapp2.1\InventorySystem.dll
+F:\A\InventorySystem\InventorySystem\obj\Debug\netcoreapp2.1\InventorySystem.pdb
+F:\A\InventorySystem\InventorySystem\obj\Debug\netcoreapp2.1\InventorySystem.csprojAssemblyReference.cache
