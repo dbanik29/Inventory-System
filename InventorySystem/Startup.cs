@@ -39,6 +39,7 @@ namespace InventorySystem
             var appSettingsSection = Configuration.GetSection("AppSettings");
             var appSettings = appSettingsSection.Get<AppSettings>();
             var key = Encoding.ASCII.GetBytes(appSettings.Secret);
+            //Authentication
             services.AddAuthentication(x =>
             {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -59,7 +60,6 @@ namespace InventorySystem
             services.Configure<AppSettings>(appSettingsSection);
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IUserService, UserService>();
-            services.AddScoped<IAdminService, AdminService>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
 

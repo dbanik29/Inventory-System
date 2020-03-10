@@ -8,6 +8,7 @@ namespace InventorySystem.Services
 {
     public interface IUserService
     {
+        User LoginAuthentication(string username, string password);
         Task<List<User>> GetAllUser();
         Task<int> AddUser(User user);
         Task<int> DeleteUser(int? UserId);

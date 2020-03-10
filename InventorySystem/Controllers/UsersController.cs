@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace InventorySystem.Controllers
 {
@@ -18,19 +19,95 @@ namespace InventorySystem.Controllers
             _userService = userService;
         }
 
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("Login")]
+        public IActionResult Login(User admin)
+        {
+            var useradmin = _userService.LoginAuthentication(admin.UserName, admin.Password);
+
+            if (useradmin == null)
+                return BadRequest(new { message = "Username or Password is incorrect" });
+
+            return Ok(useradmin);
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("UserRegistration")]
+        public async Task<IActionResult> UserRegistration([FromBody]User model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var modelid = await _userService.AddUser(model);
+                    if (modelid > 0)
+                    {
+                        return Ok(modelid);
+                    }
+                    else
+                    {
+                        return BadRequest(new { message = "User registration Failed" });
+                    }
+                }
+                catch (Exception)
+                {
+                    return BadRequest();
+                }
+            }
+            return BadRequest();
+        }
+            
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         [Route("GetAllUser")]
         public async Task<IActionResult> GetAllUser()
-        {
+        {           
             try
             {
+                List<User> euser = new List<User>();
                 var users = await _userService.GetAllUser();
-                if (users == null)
+                foreach (var model in users)
+                {
+                    if (model.UserId % 2 == 0)
+                    {
+                        //List<User> aduser = new List<User>();
+                        euser.Add(model);
+                    }
+                }
+                if (euser == null)
                 {
                     return NotFound();
                 }
-
-                return Ok(users);
+                return Ok(euser);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+            }
+        }
+        [HttpGet]
+        [Authorize(Roles = "Manager")]
+        [Route("GetOddUsers")]
+        public async Task<IActionResult> GetOddUsers()
+        {
+            try
+            {
+                List<User> odduser = new List<User>();
+                var users = await _userService.GetAllUser();
+                foreach (var model in users)
+                {
+                    if (model.UserId % 2 == 1)
+                    {
+                        odduser.Add(model);
+                    }
+                }
+                if (odduser == null)
+                {
+                    return NotFound();
+                }
+                return Ok(odduser);
             }
             catch (Exception ex)
             {
@@ -40,6 +117,7 @@ namespace InventorySystem.Controllers
 
         [HttpPost]
         [Route("AddUser")]
+        [Authorize(Roles = "Manager")]
         public async Task<IActionResult> AddUser([FromBody]User model)
         {
             if (ModelState.IsValid)

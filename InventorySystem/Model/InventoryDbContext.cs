@@ -15,7 +15,6 @@ namespace InventorySystem.Model
         }
         public virtual DbSet<Product> ProductDetailss { get; set; }
         public virtual DbSet<User> UserInformations { get; set; }
-        public virtual DbSet<Admin> AdminDetailss { get; set; }
 
 }
 }
